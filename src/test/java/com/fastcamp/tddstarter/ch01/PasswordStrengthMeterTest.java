@@ -20,7 +20,7 @@ public class PasswordStrengthMeterTest {
     @Test
     void meetOtherCriteriaExpectForLengthThenNormal(){
         PasswordStrengthMeter meter = new PasswordStrengthMeter();
-        PasswordStrength result = meter.meter("ab12!@AB"); // Expected: NORMAL
+        PasswordStrength result = meter.meter("ab12!@A"); // Expected: NORMAL
         assertEquals(PasswordStrength.NORMAL, result);
     }
 
