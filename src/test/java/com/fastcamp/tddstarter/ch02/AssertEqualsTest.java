@@ -2,10 +2,10 @@ package com.fastcamp.tddstarter.ch02;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.internal.matchers.Null;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertEqualsTest {
     @Test
@@ -20,13 +20,22 @@ public class AssertEqualsTest {
         return name.toUpperCase();
     }
     @Test
-    void toUpperCaseTest() {
+    void failTest() {
         try {
             String name = toUpperCase(null);
             Assertions.fail();
             assertEquals("JIHO", name);
         } catch (NullPointerException e) {
-
         }
+    }
+
+    @Test
+    void throwExceptionTest(){
+        assertThrows(NullPointerException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                toUpperCase(null);
+            }
+        });
     }
 }
